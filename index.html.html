@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SK Asesorías Académicas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#050505;
+  --white:#fafafa;
+  --soft:#f1f1f1;
+  --gray:#747474;
+  --line:#d9d9d9;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--white);
+  color:var(--black);
+  font-family:'Inter', sans-serif;
+  line-height:1.5;
+}
+
+.wrap{
+  width:min(1120px, calc(100% - 40px));
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+  background:rgba(250,250,250,.92);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  color:var(--black);
+}
+
+.logo-circle{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--black);
+  color:var(--white);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.9rem;
+  letter-spacing:-.08em;
+  position:relative;
+}
+
+.logo-circle::after{
+  content:"";
+  width:30px;
+  height:1px;
+  background:var(--white);
+  position:absolute;
+  transform:rotate(-48deg);
+  right:8px;
+  top:23px;
+}
+
+.brand-text strong{
+  display:block;
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem;
+  font-weight:600;
+  letter-spacing:-.04em;
+  line-height:.85;
+}
+
+.brand-text span{
+  display:block;
+  margin-top:5px;
+  font-size:.65rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:#888;
+}
+
+.nav-btn{
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:10px 22px;
+  color:var(--black);
+  text-decoration:none;
+  font-size:.78rem;
+  transition:.25s ease;
+}
+
+.nav-btn:hover{
+  background:var(--black);
+  color:var(--white);
+}
+
+/* HERO */
+
+.hero{
+  padding:58px 0 36px;
+}
+
+.hero-top{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:start;
+  gap:30px;
+}
+
+.hero-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(4rem, 12vw, 9rem);
+  line-height:.82;
+  font-weight:500;
+  letter-spacing:-.07em;
+}
+
+.hero-title em{
+  font-style:italic;
+  font-weight:700;
+}
+
+.hero-subline{
+  margin-top:18px;
+  font-size:.75rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.arrow{
+  font-size:4rem;
+  line-height:1;
+  margin-top:35px;
+}
+
+.hero-copy{
+  max-width:500px;
+  margin-top:30px;
+  color:#333;
+  font-size:.96rem;
+}
+
+/* GALERÍA */
+
+.hero-gallery{
+  margin-top:55px;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:16px;
+}
+
+.gallery-item{
+  display:flex;
+  flex-direction:column;
+}
+
+.gallery-item span{
+  margin-top:12px;
+  font-size:.65rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:#888;
+}
+
+.gallery-card{
+  overflow:hidden;
+  background:#f2f2f2;
+  height:500px;
+}
+
+.gallery-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:grayscale(12%);
+  transition:.7s ease;
+}
+
+.gallery-card:hover img{
+  transform:scale(1.04);
+  filter:grayscale(0%);
+}
+
+/* ABOUT */
+
+.about{
+  background:#181818;
+  color:var(--white);
+  padding:76px 0;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:70px;
+  align-items:start;
+}
+
+.section-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(2.8rem, 6vw, 5rem);
+  line-height:.9;
+  font-weight:500;
+  letter-spacing:-.04em;
+}
+
+.section-title em{
+  font-style:italic;
+  font-weight:700;
+}
+
+.about p{
+  color:#d6d6d6;
+  font-size:.95rem;
+  max-width:520px;
+}
+
+.small-mark{
+  font-family:'Cormorant Garamond', serif;
+  font-size:3rem;
+  margin:20px 0;
+}
+
+/* SERVICES */
+
+.work{
+  padding:84px 0;
+}
+
+.work-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  border-bottom:1px solid var(--black);
+  padding-bottom:24px;
+}
+
+.down-arrow{
+  font-size:4rem;
+  line-height:1;
+}
+
+.services-list{
+  margin-top:42px;
+}
+
+.service-row{
+  display:grid;
+  grid-template-columns:90px 1fr auto;
+  gap:24px;
+  align-items:center;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.service-number{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem;
+}
+
+.service-row h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.25rem;
+  font-weight:500;
+}
+
+.service-row p{
+  color:var(--gray);
+  max-width:440px;
+  font-size:.9rem;
+}
+
+.service-row span{
+  font-size:1.5rem;
+}
+
+/* PROCESS */
+
+.process{
+  background:var(--soft);
+  padding:86px 0;
+}
+
+.process-grid{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+
+.process-card{
+  background:var(--white);
+  padding:34px;
+  min-height:260px;
+  border:1px solid var(--line);
+}
+
+.process-card b{
+  font-family:'Cormorant Garamond', serif;
+  font-size:3.3rem;
+  font-weight:400;
+}
+
+.process-card h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem;
+  font-weight:500;
+  margin:20px 0 12px;
+}
+
+.process-card p{
+  color:var(--gray);
+  font-size:.92rem;
+}
+
+/* CTA */
+
+.cta{
+  padding:94px 0;
+  text-align:center;
+}
+
+.cta h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(3.2rem, 8vw, 7rem);
+  line-height:.85;
+  font-weight:500;
+  letter-spacing:-.06em;
+  max-width:900px;
+  margin:auto;
+}
+
+.cta h2 em{
+  font-style:italic;
+  font-weight:700;
+}
+
+.cta p{
+  margin:28px auto 0;
+  max-width:560px;
+  color:var(--gray);
+}
+
+.cta-btn{
+  display:inline-block;
+  margin-top:36px;
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:14px 34px;
+  color:var(--black);
+  text-decoration:none;
+  font-size:.88rem;
+  transition:.25s ease;
+}
+
+.cta-btn:hover{
+  background:var(--black);
+  color:var(--white);
+}
+
+/* FOOTER */
+
+footer{
+  background:var(--black);
+  color:var(--white);
+  padding:44px 0;
+}
+
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  flex-wrap:wrap;
+  align-items:flex-end;
+}
+
+footer h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.4rem;
+  font-weight:500;
+}
+
+footer p,
+footer a{
+  color:#cfcfcf;
+  text-decoration:none;
+  font-size:.9rem;
+}
+
+.footer-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background:var(--black);
+  color:var(--white);
+  border:1px solid var(--white);
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:1.4rem;
+  z-index:20;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+  .hero-top,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-card{
+    height:340px;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-row{
+    grid-template-columns:60px 1fr;
+  }
+
+  .service-row span{
+    display:none;
+  }
+
+  .brand-text span{
+    display:none;
+  }
+}
+
+@media(max-width:540px){
+  .gallery-card{
+    height:260px;
+  }
+
+  .nav-btn{
+    padding:8px 14px;
+    font-size:.72rem;
+  }
+
+  .hero-title{
+    font-size:4.3rem;
+  }
+
+  .hero-subline{
+    letter-spacing:.18em;
+    font-size:.68rem;
+  }
+
+  .service-row h3{
+    font-size:1.8rem;
+  }
+
+  .logo-circle{
+    width:50px;
+    height:50px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <div class="logo-circle">SK</div>
+      <div class="brand-text">
+        <strong>SK</strong>
+        <span>Asesorías Académicas</span>
+      </div>
+    </a>
+
+    <a class="nav-btn" href="https://wa.me/50688269782?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20SK%20Asesor%C3%ADas." target="_blank">
+      Agendá tu asesoría
+    </a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <h1 class="hero-title">
+          Construí<br>
+          tu <em>éxito</em><br>
+          académico.
+        </h1>
+
+        <p class="hero-subline">
+          Tutorías · Investigación · Tesis · APA 7
+        </p>
+
+        <p class="hero-copy">
+          Acompañamiento académico personalizado para estudiantes universitarios:
+          tutorías, tesis, investigación, normas APA 7, redacción y organización
+          de trabajos.
+        </p>
+      </div>
+
+      <div class="arrow">→</div>
+    </div>
+
+    <div class="hero-gallery">
+
+      <div class="gallery-item featured">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=90" alt="Estudiante universitaria">
+        </div>
+        <span>Estudio</span>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=90" alt="Investigación académica">
+        </div>
+        <span>Investigación</span>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=90" alt="Graduación universitaria">
+        </div>
+        <span>Graduación</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+
+    <div>
+      <h2 class="section-title">
+        Te saluda<br>
+        <em>Katherine</em>
+      </h2>
+
+      <div class="small-mark">⊂⊃</div>
+    </div>
+
+    <div>
+
+      <p>
+        Te saluda <strong>Katherine</strong>, profesional con formación universitaria
+        y experiencia en investigación, redacción académica y acompañamiento a estudiantes universitarios.
+      </p>
+
+      <br>
+
+      <p>
+        SK Asesorías nace como un espacio de apoyo académico personalizado para
+        estudiantes que buscan orientación clara y profesional en sus procesos de
+        aprendizaje, investigaciones, trabajos finales de graduación y proyectos universitarios.
+      </p>
+
+      <br>
+
+      <p>
+        Mi objetivo es brindarte herramientas, guía y acompañamiento para que desarrollés
+        tus trabajos con mayor seguridad, organización y confianza, respetando siempre
+        la ética académica y el aprendizaje como parte fundamental del proceso.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="work" id="servicios">
+  <div class="wrap">
+    <div class="work-head">
+      <h2 class="section-title">
+        Nuestro <em>trabajo</em>
+      </h2>
+      <div class="down-arrow">↓</div>
+    </div>
+
+    <div class="services-list">
+
+      <div class="service-row">
+        <div class="service-number">01</div>
+        <div>
+          <h3>Tutorías universitarias</h3>
+          <p>Explicación de contenidos, preparación para exámenes, exposiciones y trabajos.</p>
+        </div>
+        <span>→</span>
+      </div>
+
+      <div class="service-row">
+        <div class="service-number">02</div>
+        <div>
+          <h3>Tesis y TFG</h3>
+          <p>Acompañamiento en estructura, capítulos, avances, revisión y preparación para defensa.</p>
+        </div>
+        <span>→</span>
+      </div>
+
+      <div class="service-row">
+        <div class="service-number">03</div>
+        <div>
+          <h3>Investigación académica</h3>
+          <p>Apoyo en problema, objetivos, marco teórico, metodología e instrumentos.</p>
+        </div>
+        <span>→</span>
+      </div>
+
+      <div class="service-row">
+        <div class="service-number">04</div>
+        <div>
+          <h3>Normas APA 7</h3>
+          <p>Revisión de citas, referencias, tablas, formato y presentación académica.</p>
+        </div>
+        <span>→</span>
+      </div>
+
+      <div class="service-row">
+        <div class="service-number">05</div>
+        <div>
+          <h3>Corrección de estilo</h3>
+          <p>Mejora de redacción, ortografía, coherencia, claridad y estructura textual.</p>
+        </div>
+        <span>→</span>
+      </div>
+
+      <div class="service-row">
+        <div class="service-number">06</div>
+        <div>
+          <h3>Organización académica</h3>
+          <p>Planificación de entregas, cronogramas, técnicas de estudio y seguimiento.</p>
+        </div>
+        <span>→</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <h2 class="section-title">
+      Cómo <em>funciona</em>
+    </h2>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <b>01</b>
+        <h3>Consulta</h3>
+        <p>Nos escribís por WhatsApp y nos contás qué necesitás, fecha de entrega y tipo de trabajo.</p>
+      </div>
+
+      <div class="process-card">
+        <b>02</b>
+        <h3>Plan</h3>
+        <p>Definimos el alcance del acompañamiento, modalidad, sesiones y costo del servicio.</p>
+      </div>
+
+      <div class="process-card">
+        <b>03</b>
+        <h3>Acompañamiento</h3>
+        <p>Trabajamos con guía, retroalimentación y seguimiento hasta que tu avance esté más claro y ordenado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>
+      Transformá tu <em>potencial</em><br>
+      académico
+    </h2>
+
+    <p>
+      Agendá tu asesoría y recibí acompañamiento personalizado para avanzar
+      con tus cursos, trabajos, tesis o proyectos universitarios.
+    </p>
+
+    <a class="cta-btn" href="https://wa.me/50688269782?text=Hola%2C%20quiero%20agendar%20una%20asesor%C3%ADa%20acad%C3%A9mica%20con%20SK%20Asesor%C3%ADas." target="_blank">
+      Agendá tu asesoría →
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <h3>SK Asesorías</h3>
+      <p>Asesorías Académicas · Costa Rica</p>
+      <p>WhatsApp: 8826-9782</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#servicios">Servicios</a>
+      <a href="https://wa.me/50688269782" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/50688269782?text=Hola%2C%20necesito%20asesor%C3%ADa%20acad%C3%A9mica." target="_blank">
+  ✆
+</a>
+
+</body>
+</html>
